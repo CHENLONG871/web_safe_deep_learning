@@ -1,0 +1,12 @@
+#logfile
+*.log
+*.log.*
+log
+
+#data
+#.json
+#.csv
+
+#compile py
+
+
