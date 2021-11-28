@@ -59,6 +59,7 @@ def get_feature():
     return x_train, x_test, y_train, y_test
 
 
+#当前的脚本没有问题
 def get_feature_charseq():
     """
     :return:字符序列模型,字符组成的序列，字符转换成对应的ASCII值，这样就可以把域名最终转换成一个数字序列：可以理解为是具有时序特征的时序序列
@@ -80,3 +81,10 @@ def get_feature_charseq():
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4)
 
     return x_train, x_test, y_train, y_test
+
+
+if __name__ == "__main__":
+    x_train, x_test, y_train, y_test = get_feature()
+    print('get_feature_statistic:', x_train.shape)
+    x_train, x_test_3, y_train_3, y_test_3 = get_feature_charseq()
+    print('get_feature_charseq:', type(x_train))

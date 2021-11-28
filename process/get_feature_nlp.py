@@ -22,8 +22,7 @@ def get_feature_2gram():
     x = alexa + dga
     max_features = 10000
     y = [0] * len(alexa) + [1] * len(dga)
-
-    CV = CountVectorizer(
+    cv = CountVectorizer(
         ngram_range=(2, 2),
         token_pattern=r'\w',
         decode_error='ignore',
@@ -32,9 +31,8 @@ def get_feature_2gram():
         stop_words='english',
         max_df=1.0,
         min_df=1)
-    x = CV.fit_transform(x)
+    x = cv.fit_transform(x)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4)
-
     return x_train.toarray(), x_test.toarray(), y_train, y_test
 
 
@@ -54,7 +52,7 @@ def get_feature_tfidf():
         decode_error='ignore',
         stop_words='english',
         ngram_range=(1, 1),
-        max_features=10000)
+        max_features=max_features)
     word_vectorizer.fit(x)  # 这里确实是拿了全部的样本的
     train_word_features = word_vectorizer.transform(x)
 
@@ -72,7 +70,7 @@ def get_feature_234gram():
     max_features = 10000
     y = [0] * len(alexa) + [1] * len(dga)
 
-    CV = CountVectorizer(
+    cv = CountVectorizer(
         ngram_range=(2, 4),
         token_pattern=r'\w',
         decode_error='ignore',
@@ -81,9 +79,16 @@ def get_feature_234gram():
         stop_words='english',
         max_df=1.0,
         min_df=1)
-    x = CV.fit_transform(x)
+    x = cv.fit_transform(x)
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4)
 
     return x_train.toarray(), x_test.toarray(), y_train, y_test
 
 
+if __name__ == "__main__":
+    x_train, x_test_1, y_train_1, y_test_1 = get_feature_2gram()
+    print('get_feature_2gram:', x_train.shape)
+    x_train, x_test_2, y_train_2, y_test_2 = get_feature_tfidf()
+    print('get_feature_tfidf:', x_train.shape)
+    x_train, x_test_3, y_train_3, y_test_3 = get_feature_234gram()
+    print('get_feature_234gram:', x_train.shape)

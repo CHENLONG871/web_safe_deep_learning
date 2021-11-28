@@ -35,7 +35,9 @@ def load_dga():
     return x
 
 
+# 开始测试则会一部脚本
 if __name__ == "__main__":
     dga = load_dga()
     alexa = load_alexa()
-    print(type(dga))
+    print(type(dga), len(dga))
+    print(type(alexa),len(alexa))
