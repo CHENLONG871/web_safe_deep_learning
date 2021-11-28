@@ -33,3 +33,9 @@ def load_dga():
     data = pd.read_csv(dga_file, sep="\t", header=None)
     x = [i[1] for i in data.values]
     return x
+
+
+if __name__ == "__main__":
+    dga = load_dga()
+    alexa = load_alexa()
+    print(type(dga))
