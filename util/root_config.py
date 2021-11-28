@@ -8,6 +8,7 @@
 @Date ：2021/11/25 23:19 
 '''
 import pandas as pd
+import datetime
 
 dga_file = "E:/pycharm_project/deep_learning_web_safe/dga/data/dga.txt"
 alexa_file = "E:/pycharm_project/deep_learning_web_safe/dga/data/dga1m.csv"
@@ -37,7 +38,9 @@ def load_dga():
 
 # 开始测试则会一部脚本
 if __name__ == "__main__":
+    print('start_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
     dga = load_dga()
     alexa = load_alexa()
     print(type(dga), len(dga))
     print(type(alexa),len(alexa))
+    print('send_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))

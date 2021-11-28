@@ -74,8 +74,8 @@ def load_all_files():
 if __name__ == "__main__":
     print('start_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
     x_train, x_test, y_train, y_test = load_all_files()
-    print(type(x_train),x_train.shape)
-    print(type(y_train), y_train.shape)
+    print(type(x_train),len(x_train))
+    print(type(y_train), len(y_train))
     print('end_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
 
 
