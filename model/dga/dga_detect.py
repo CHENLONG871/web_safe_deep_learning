@@ -137,6 +137,7 @@ def do_mlp(x_train, x_test, y_train, y_test):
     print (metrics.confusion_matrix(y_test, y_pred))
 
 
+#统一文本特征长度，长度不够的地方用0替代。
 def do_rnn(trainX, testX, trainY, testY):
     """
     :param trainX:
