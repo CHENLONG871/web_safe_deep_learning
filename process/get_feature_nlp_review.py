@@ -14,10 +14,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 from web_safe_deep_learning.util.root_config_review import load_all_files
 from sklearn.feature_extraction.text import TfidfTransformer
 
-#给定超参数的取值
-max_features=200
-max_document_length=500  #词汇表模型中需要用到,这个参数的取值会影响到cnn模型的正常运行(out of list)
-vocabulary=None
+# 给定超参数的取值
+max_features = 200
+# max_document_length=500  #词汇表模型中需要用到,这个参数的取值会影响到cnn模型的正常运行(out of list)
+max_document_length = 100
+vocabulary = None
+
 
 def get_features_by_wordbag():
     """
