@@ -9,13 +9,24 @@
 '''
 # 'E:\\github_project\\web_safe_deep_learning'
 from web_safe_deep_learning.util.root_config_review import load_all_files
+from web_safe_deep_learning.util.root_config_review import cleanText, normalize_text, labelizeReviews, getvecs, \
+    buildWordVector
 import datetime
+from sklearn.preprocessing import scale
+import multiprocessing
+import gensim
+import os
+import numpy as np
+from sklearn import preprocessing
+from gensim.models import Doc2Vec
 
-# 保存模型文件
+# 给定超参数及保存模型文件
+max_features = 200
+max_document_length = 500
+vocabulary = None
 word2ver_bin = "review_word2vec.bin"
 doc2ver_bin = "review_doc2vec.bin"
-
-print('start_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
+word2ver_bin_cnn1d = "review_word2vec_cnn1d.bin"
 
 
 # word2vec文本特征模型会将每一个词语转化为n维向量，所以在自己电脑上内存会不够
@@ -119,8 +130,8 @@ def get_features_by_doc2vec():
         model.train(x, total_examples=model.corpus_count, epochs=model.iter)
         model.save(doc2ver_bin)
 
-    x_test = getVecs(model, x_test, max_features)
-    x_train = getVecs(model, x_train, max_features)
+    x_test = getvecs(model, x_test, max_features)
+    x_train = getvecs(model, x_train, max_features)
     min_max_scaler = preprocessing.MinMaxScaler()  # 这里我们自己进行归一化处理，看看数据有没有用
 
     x_train = min_max_scaler.fit_transform(x_train)
@@ -132,7 +143,7 @@ def get_features_by_doc2vec():
 if __name__ == "__main__":
     start_time = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
     x_train, x_test, y_train, y_test = get_features_by_word2vec()
-    print("et_features_by_word2vec:", x_train.shape, x_train[1, 2:10])
+    print("get_features_by_word2vec:", x_train.shape, x_train[1, 2:10])
     x_train, x_test_2, y_train_2, y_test_2 = get_features_by_word2vec_cnn_1d()
     print("get_features_by_word2vec_cnn_1d:", x_train.shape, x_train[1, 2:10])
     x_train, x_test_3, y_train_3, y_test_3 = get_features_by_doc2vec()

@@ -11,6 +11,10 @@
 # 导入相关的包
 import datetime
 import os
+from collections import namedtuple
+import numpy as np
+
+SentimentDocument = namedtuple('SentimentDocument', 'words tags')
 
 
 def load_one_file(filename):
@@ -60,7 +64,6 @@ def load_all_files():
     tmp = load_files_from_dir(path)
     y_train += [1] * len(tmp)
     x_train += tmp
-
     path = "E:/pycharm_project/deep_learning_web_safe/review/data/test/pos/"
     print("Load %s" % path)
     x_test = load_files_from_dir(path)
@@ -119,7 +122,7 @@ def labelizeReviews(reviews, label_type):
     return labelized
 
 
-def getVecs(model, corpus, size):
+def getvecs(model, corpus, size):
     """
     :param model:
     :param corpus:
