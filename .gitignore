@@ -9,4 +9,5 @@ log
 
 #compile py
 
+*.npy
 

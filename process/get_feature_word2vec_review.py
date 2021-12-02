@@ -140,6 +140,8 @@ def get_features_by_doc2vec():
     return x_train, x_test, y_train, y_test
 
 
+
+
 if __name__ == "__main__":
     start_time = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
     x_train, x_test, y_train, y_test = get_features_by_word2vec()
