@@ -10,4 +10,4 @@ log
 #compile py
 
 *.npy
-
+*.bin
