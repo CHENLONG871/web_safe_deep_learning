@@ -43,4 +43,4 @@ if __name__ == "__main__":
     alexa = load_alexa()
     print(type(dga), len(dga))
     print(type(alexa),len(alexa))
-    print('send_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
+    print('end_time: ' + datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S'))
